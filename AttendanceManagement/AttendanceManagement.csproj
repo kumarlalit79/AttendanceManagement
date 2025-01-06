@@ -253,6 +253,7 @@
     </Content>
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="DatabaseBackup\Attendance_Tracker" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\HighChart\accessibility.js" />
     <Content Include="Scripts\HighChart\drilldown.js" />
