@@ -1,0 +1,99 @@
+﻿@model AttendanceManagement.Models.LoginViewModel
+@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap.rtl.min.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+@using (Html.BeginForm("Index", "LoginTeacher", new { returnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post))
+{
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="border p-4" style="border-color: rgba(0, 0, 0, 0.1); border-radius: 10px;">
+                    <div class="row">
+                        @* Left Side: Form *@
+                        <div class="col-md-7">
+                            <h2 class="text-center mb-4">Login</h2>
+
+                            @* User ID Field *@
+                            <div class="form-group mb-3">
+                                <label for="UserId">College ID:</label>
+                                @Html.TextBoxFor(m => m.UserId, new { @class = "form-control" })
+                            </div>
+
+                            @* Password Field *@
+                            <div class="form-group mb-3">
+                                <label for="Password">Password:</label>
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            </div>
+
+                            @* User Type Dropdown *@
+                            <div class="form-group mb-4">
+                                <label for="UserType">User Type:</label>
+                                @Html.DropDownListFor(m => m.UserType,
+                                    new SelectList(new[] { "Select User Type", "Teacher", "Student", "Admin" }),
+                                    new { @class = "form-control" })
+                            </div>
+
+                            @* Submit Button *@
+                            <div class="d-grid">
+                                <input type="submit" value="Login" class="btn btn-primary btn-block" />
+                            </div>
+
+                            @* Error Message *@
+                            @if (ViewBag.Message != null)
+                            {
+                                <div class="alert alert-danger mt-3" role="alert">
+                                    @ViewBag.Message
+                                </div>
+                            }
+
+                            <div class="mt-4 text-center">
+                                <a href="@Url.Action("Create", "SignUpTeacher")" class="link-secondary">Sign Up as Teacher</a>
+                                &nbsp;&nbsp;
+                                <a href="@Url.Action("Create", "StudentSignUp")" class="link-secondary">Sign Up as Student</a>
+                            </div>
+                        </div>
+
+                        @* Right Side: Image *@
+                        <div class="col-md-5 d-flex align-items-center justify-content-center">
+                            <img src="~/Content/Images/Login.jpg" class="img-fluid" alt="Login Image" style="max-height: 350px;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script src="~/Scripts/jquery-3.7.1.min.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        // Toastr options
+        toastr.options = {
+            "positionClass": "toast-top-center",
+            "closeButton": true,
+            "progressBar": true,
+            "timeOut": "5000"
+        };
+
+        // Display toastr notification
+        var message = '@Html.Raw(TempData["LogoutToast"])';
+        if (message) {
+            toastr.success(message);
+        }
+    });
+</script>
+
+

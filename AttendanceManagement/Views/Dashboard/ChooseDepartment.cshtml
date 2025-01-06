@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "ChooseDepartment";
+    Layout = "~/Views/Shared/Master.cshtml";
+    
+}
+
+<h2>ChooseDepartment</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card" style="width: 200px; height: 100px;">
+                <div class="card-body text-center" style="padding: 10px;">
+                    <b>CSE</b> <br />
+                    @Html.DropDownList("Sem_Id", (SelectList)ViewBag.semester , "Choose semester" , new {@class = "form-control"})
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center" style="width: 200px; height: 100px;">
+                <div class="card-body" style="padding: 10px;">
+                    <b>CSE-AIML</b>
+                    @Html.DropDownList("Sem_Id", (SelectList)ViewBag.semester, "Choose semester", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center" style="width: 200px; height: 100px;">
+                <div class="card-body" style="padding: 10px;">
+                    <b>ECE</b>
+                    @Html.DropDownList("Sem_Id", (SelectList)ViewBag.semester, "Choose semester", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-center" style="width: 200px; height: 100px;">
+                <div class="card-body" style="padding: 10px;">
+                    <b>EE</b>
+                    @Html.DropDownList("Sem_Id", (SelectList)ViewBag.semester, "Choose semester", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center" style="width: 200px; height: 100px;">
+                <div class="card-body" style="padding: 10px;">
+                    <b>ME</b>
+                    @Html.DropDownList("Sem_Id", (SelectList)ViewBag.semester, "Choose semester", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center" style="width: 200px; height: 100px;">
+                <div class="card-body" style="padding: 10px;">
+                    <b>CE</b>
+                    @Html.DropDownList("Sem_Id", (SelectList)ViewBag.semester, "Choose semester", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-center" style="width: 200px; height: 100px;">
+                <div class="card-body" style="padding: 10px;">
+                    <b>BT</b>
+                    @Html.DropDownList("Sem_Id", (SelectList)ViewBag.semester, "Choose semester", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center" style="width: 200px; height: 100px;">
+                <div class="card-body" style="padding: 10px;">
+                    <b>MCA</b>
+                    @Html.DropDownList("Sem_Id", (SelectList)ViewBag.semester, "Choose semester", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center" style="width: 200px; height: 100px;">
+                <div class="card-body" style="padding: 10px;">
+                    <b>MTECH</b>
+                    @Html.DropDownList("Sem_Id", (SelectList)ViewBag.semester, "Choose semester", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

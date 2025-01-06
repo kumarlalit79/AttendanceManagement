@@ -1,0 +1,206 @@
+﻿@model IEnumerable<AttendanceManagement.Models.student_tbl>
+
+@{
+    ViewBag.Title = "ViewAllStudent";
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+
+<h2>ViewAllStudent</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+
+<div class="container">
+    <div class="row mb-3" >
+        <div class="col-md-6">
+            @Html.DropDownList("Sem_Id", (SelectList)ViewBag.semester, "--Select Semester--", new { @class = "form-control" , id="Sem_Id" })
+        </div>
+        <div class="col-md-6">
+            @Html.DropDownList("DeptId", (SelectList)ViewBag.department, "--Select Department--", new { @class = "form-control" , id="DeptId" })
+        </div>
+    </div>
+</div>
+
+
+<table class="table" id="studentTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.student_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pincode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student_Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOB)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Created_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created_by)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.college_tbl.Name)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.course_tbl.course_name)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.department_tbl.DeptName)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.hostel_tbl.hostel_name)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.semester_tbl.Semester_Name)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.year_tbl.Year)
+            </th>*@
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="studentTableBody">
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.student_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pincode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mobile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student_Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOB)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Created_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Created_by)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.college_tbl.Name)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.course_tbl.course_name)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.department_tbl.DeptName)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.hostel_tbl.hostel_name)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.semester_tbl.Semester_Name)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.year_tbl.Year)
+                </td>*@
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>
+
+
+<script src="~/Scripts/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Sem_Id, #DeptId').change(function () {
+            var semesterId = $('#Sem_Id').val();
+            var departmentId = $('#DeptId').val();
+
+            $.ajax({
+                url: '@Url.Action("ViewAllStudent" , "Dashboard")',
+                type: 'GET',
+                dataType: 'json',
+                data: { semesterId: semesterId, departmentId: departmentId },
+                success: function (response) {
+                    var tableBody = $('#studentTableBody');
+                    tableBody.empty();
+
+                    $.each(response.data, function (index, student) {
+                        tableBody.append(
+                            '<tr>' +
+                            '<td>' + student.student_id + '</td>' +
+                            '<td>' + student.Name + '</td>' +
+                            '<td>' + student.Address + '</td>' +
+                            '<td>' + student.City + '</td>' +
+                            '<td>' + student.State + '</td>' +
+                            '<td>' + student.Pincode + '</td>' +
+                            '<td>' + student.Mobile + '</td>' +
+                            '<td>' + student.Email + '</td>' +
+                            '<td>' + student.Student_Type + '</td>' +
+                            '<td>' + student.DOB + '</td>' +
+                            '<td>' + student.college_tbl.Name + '</td>' +
+                            '<td>' + student.department_tbl.DeptName + '</td>' +
+                            '<td>' + student.semester_tbl.Semester_Name + '</td>' +
+                            '</tr>'
+                        )
+                    })
+                },
+                error: function () {
+                    alert("Error fetching data!");
+                }
+            });
+        })
+    });
+</script>

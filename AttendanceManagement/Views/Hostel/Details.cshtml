@@ -1,0 +1,42 @@
+﻿@model AttendanceManagement.Models.hostel_tbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>hostel_tbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.hostel_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hostel_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_by)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.hostel_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

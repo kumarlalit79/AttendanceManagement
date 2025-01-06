@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AttendanceManagement.Models.hostel_tbl>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.hostel_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created_by)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.hostel_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created_by)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.hostel_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.hostel_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.hostel_id })
+        </td>
+    </tr>
+}
+
+</table>

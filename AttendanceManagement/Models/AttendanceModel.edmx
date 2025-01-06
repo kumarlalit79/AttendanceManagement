@@ -1,0 +1,773 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AttendanceTrackrModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Admin_ID" Type="int" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FK_College_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="AttendanceTbl">
+          <Key>
+            <PropertyRef Name="attendance_id" />
+          </Key>
+          <Property Name="attendance_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="student_id" Type="int" Nullable="false" />
+          <Property Name="isPresent" Type="bit" />
+          <Property Name="attendance_date" Type="date" />
+          <Property Name="marked_by" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="college_tbl">
+          <Key>
+            <PropertyRef Name="Col_id" />
+          </Key>
+          <Property Name="Col_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pincode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Created_date" Type="date" Nullable="false" />
+          <Property Name="Created_by" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="course_tbl">
+          <Key>
+            <PropertyRef Name="course_id" />
+          </Key>
+          <Property Name="course_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="course_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Created_date" Type="date" Nullable="false" />
+          <Property Name="Created_by" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="department_tbl">
+          <Key>
+            <PropertyRef Name="DeptId" />
+          </Key>
+          <Property Name="DeptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeptName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Created_date" Type="date" Nullable="false" />
+          <Property Name="Created_by" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hostel_tbl">
+          <Key>
+            <PropertyRef Name="hostel_id" />
+          </Key>
+          <Property Name="hostel_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hostel_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Created_date" Type="date" Nullable="false" />
+          <Property Name="Created_by" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Role_Id" />
+          </Key>
+          <Property Name="Role_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role_Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="semester_tbl">
+          <Key>
+            <PropertyRef Name="Sem_Id" />
+          </Key>
+          <Property Name="Sem_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Semester_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Created_date" Type="date" Nullable="false" />
+          <Property Name="Created_by" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="student_tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="student_id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pincode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Student_Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FK_Dept_Id" Type="int" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="FK_Collage_Id" Type="int" />
+          <Property Name="FK_Year_Id" Type="int" />
+          <Property Name="FK_Sem_Id" Type="int" />
+          <Property Name="FK_Course_Id" Type="int" />
+          <Property Name="FK_Hostel_Id" Type="int" />
+          <Property Name="Created_date" Type="date" Nullable="false" />
+          <Property Name="Created_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teacher_tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Faculty_Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FK_Dept_Id" Type="int" />
+          <Property Name="Created_date" Type="date" />
+          <Property Name="Created_by" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Student_Id" Type="int" />
+          <Property Name="Faculty_Id" Type="int" />
+          <Property Name="Role_Id" Type="int" Nullable="false" />
+          <Property Name="Admin_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="year_tbl">
+          <Key>
+            <PropertyRef Name="Year_Id" />
+          </Key>
+          <Property Name="Year_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Year" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Created_date" Type="date" Nullable="false" />
+          <Property Name="Created_by" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__Attendanc__stude__662B2B3B' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Attendanc__stude__662B2B3B" />-->
+        <Association Name="FK__student_t__FK_Co__5EBF139D">
+          <End Role="college_tbl" Type="Self.college_tbl" Multiplicity="0..1" />
+          <End Role="student_tbl" Type="Self.student_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="college_tbl">
+              <PropertyRef Name="Col_id" />
+            </Principal>
+            <Dependent Role="student_tbl">
+              <PropertyRef Name="FK_Collage_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_t__FK_Co__619B8048">
+          <End Role="course_tbl" Type="Self.course_tbl" Multiplicity="0..1" />
+          <End Role="student_tbl" Type="Self.student_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course_tbl">
+              <PropertyRef Name="course_id" />
+            </Principal>
+            <Dependent Role="student_tbl">
+              <PropertyRef Name="FK_Course_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_t__FK_De__6383C8BA">
+          <End Role="department_tbl" Type="Self.department_tbl" Multiplicity="0..1" />
+          <End Role="student_tbl" Type="Self.student_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department_tbl">
+              <PropertyRef Name="DeptId" />
+            </Principal>
+            <Dependent Role="student_tbl">
+              <PropertyRef Name="FK_Dept_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_t__FK_Ho__628FA481">
+          <End Role="hostel_tbl" Type="Self.hostel_tbl" Multiplicity="0..1" />
+          <End Role="student_tbl" Type="Self.student_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hostel_tbl">
+              <PropertyRef Name="hostel_id" />
+            </Principal>
+            <Dependent Role="student_tbl">
+              <PropertyRef Name="FK_Hostel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_t__FK_Se__60A75C0F">
+          <End Role="semester_tbl" Type="Self.semester_tbl" Multiplicity="0..1" />
+          <End Role="student_tbl" Type="Self.student_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="semester_tbl">
+              <PropertyRef Name="Sem_Id" />
+            </Principal>
+            <Dependent Role="student_tbl">
+              <PropertyRef Name="FK_Sem_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_t__FK_Ye__5FB337D6">
+          <End Role="year_tbl" Type="Self.year_tbl" Multiplicity="0..1" />
+          <End Role="student_tbl" Type="Self.student_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="year_tbl">
+              <PropertyRef Name="Year_Id" />
+            </Principal>
+            <Dependent Role="student_tbl">
+              <PropertyRef Name="FK_Year_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teacher_t__FK_De__05D8E0BE">
+          <End Role="department_tbl" Type="Self.department_tbl" Multiplicity="0..1" />
+          <End Role="Teacher_tbl" Type="Self.Teacher_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department_tbl">
+              <PropertyRef Name="DeptId" />
+            </Principal>
+            <Dependent Role="Teacher_tbl">
+              <PropertyRef Name="FK_Dept_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin_College">
+          <End Role="college_tbl" Type="Self.college_tbl" Multiplicity="0..1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="college_tbl">
+              <PropertyRef Name="Col_id" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="FK_College_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AttendanceTrackrModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AttendanceTbl" EntityType="Self.AttendanceTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="college_tbl" EntityType="Self.college_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="course_tbl" EntityType="Self.course_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="department_tbl" EntityType="Self.department_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hostel_tbl" EntityType="Self.hostel_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="semester_tbl" EntityType="Self.semester_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="student_tbl" EntityType="Self.student_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher_tbl" EntityType="Self.Teacher_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="year_tbl" EntityType="Self.year_tbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__student_t__FK_Co__5EBF139D" Association="Self.FK__student_t__FK_Co__5EBF139D">
+            <End Role="college_tbl" EntitySet="college_tbl" />
+            <End Role="student_tbl" EntitySet="student_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_t__FK_Co__619B8048" Association="Self.FK__student_t__FK_Co__619B8048">
+            <End Role="course_tbl" EntitySet="course_tbl" />
+            <End Role="student_tbl" EntitySet="student_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_t__FK_De__6383C8BA" Association="Self.FK__student_t__FK_De__6383C8BA">
+            <End Role="department_tbl" EntitySet="department_tbl" />
+            <End Role="student_tbl" EntitySet="student_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_t__FK_Ho__628FA481" Association="Self.FK__student_t__FK_Ho__628FA481">
+            <End Role="hostel_tbl" EntitySet="hostel_tbl" />
+            <End Role="student_tbl" EntitySet="student_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_t__FK_Se__60A75C0F" Association="Self.FK__student_t__FK_Se__60A75C0F">
+            <End Role="semester_tbl" EntitySet="semester_tbl" />
+            <End Role="student_tbl" EntitySet="student_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_t__FK_Ye__5FB337D6" Association="Self.FK__student_t__FK_Ye__5FB337D6">
+            <End Role="year_tbl" EntitySet="year_tbl" />
+            <End Role="student_tbl" EntitySet="student_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teacher_t__FK_De__05D8E0BE" Association="Self.FK__Teacher_t__FK_De__05D8E0BE">
+            <End Role="department_tbl" EntitySet="department_tbl" />
+            <End Role="Teacher_tbl" EntitySet="Teacher_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin_College" Association="Self.FK_Admin_College">
+            <End Role="college_tbl" EntitySet="college_tbl" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AttendanceTrackrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AttendanceTbl">
+          <Key>
+            <PropertyRef Name="attendance_id" />
+          </Key>
+          <Property Name="attendance_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="student_id" Type="Int32" Nullable="false" />
+          <Property Name="isPresent" Type="Boolean" />
+          <Property Name="attendance_date" Type="DateTime" Precision="0" />
+          <Property Name="marked_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="college_tbl">
+          <Key>
+            <PropertyRef Name="Col_id" />
+          </Key>
+          <Property Name="Col_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Created_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="student_tbl" Relationship="Self.FK__student_t__FK_Co__5EBF139D" FromRole="college_tbl" ToRole="student_tbl" />
+          <NavigationProperty Name="Admins" Relationship="AttendanceTrackrModel.FK_Admin_College" FromRole="college_tbl" ToRole="Admin" />
+        </EntityType>
+        <EntityType Name="course_tbl">
+          <Key>
+            <PropertyRef Name="course_id" />
+          </Key>
+          <Property Name="course_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="course_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Created_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="student_tbl" Relationship="Self.FK__student_t__FK_Co__619B8048" FromRole="course_tbl" ToRole="student_tbl" />
+        </EntityType>
+        <EntityType Name="department_tbl">
+          <Key>
+            <PropertyRef Name="DeptId" />
+          </Key>
+          <Property Name="DeptId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeptName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Created_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="student_tbl" Relationship="Self.FK__student_t__FK_De__6383C8BA" FromRole="department_tbl" ToRole="student_tbl" />
+          <NavigationProperty Name="Teacher_tbl" Relationship="Self.FK__Teacher_t__FK_De__05D8E0BE" FromRole="department_tbl" ToRole="Teacher_tbl" />
+        </EntityType>
+        <EntityType Name="hostel_tbl">
+          <Key>
+            <PropertyRef Name="hostel_id" />
+          </Key>
+          <Property Name="hostel_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hostel_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Created_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="student_tbl" Relationship="Self.FK__student_t__FK_Ho__628FA481" FromRole="hostel_tbl" ToRole="student_tbl" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Role_Id" />
+          </Key>
+          <Property Name="Role_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK__UserRole__Role_I__489AC854" FromRole="Role" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="semester_tbl">
+          <Key>
+            <PropertyRef Name="Sem_Id" />
+          </Key>
+          <Property Name="Sem_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Semester_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Created_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="student_tbl" Relationship="Self.FK__student_t__FK_Se__60A75C0F" FromRole="semester_tbl" ToRole="student_tbl" />
+        </EntityType>
+        <EntityType Name="student_tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="student_id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FK_Dept_Id" Type="Int32" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FK_Collage_Id" Type="Int32" />
+          <Property Name="FK_Year_Id" Type="Int32" />
+          <Property Name="FK_Sem_Id" Type="Int32" />
+          <Property Name="FK_Course_Id" Type="Int32" />
+          <Property Name="FK_Hostel_Id" Type="Int32" />
+          <Property Name="Created_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="college_tbl" Relationship="Self.FK__student_t__FK_Co__5EBF139D" FromRole="student_tbl" ToRole="college_tbl" />
+          <NavigationProperty Name="course_tbl" Relationship="Self.FK__student_t__FK_Co__619B8048" FromRole="student_tbl" ToRole="course_tbl" />
+          <NavigationProperty Name="department_tbl" Relationship="Self.FK__student_t__FK_De__6383C8BA" FromRole="student_tbl" ToRole="department_tbl" />
+          <NavigationProperty Name="hostel_tbl" Relationship="Self.FK__student_t__FK_Ho__628FA481" FromRole="student_tbl" ToRole="hostel_tbl" />
+          <NavigationProperty Name="semester_tbl" Relationship="Self.FK__student_t__FK_Se__60A75C0F" FromRole="student_tbl" ToRole="semester_tbl" />
+          <NavigationProperty Name="year_tbl" Relationship="Self.FK__student_t__FK_Ye__5FB337D6" FromRole="student_tbl" ToRole="year_tbl" />
+        </EntityType>
+        <EntityType Name="Teacher_tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Faculty_Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FK_Dept_Id" Type="Int32" />
+          <Property Name="Created_date" Type="DateTime" Precision="0" />
+          <Property Name="Created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="department_tbl" Relationship="Self.FK__Teacher_t__FK_De__05D8E0BE" FromRole="Teacher_tbl" ToRole="department_tbl" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student_Id" Type="Int32" />
+          <Property Name="Faculty_Id" Type="Int32" />
+          <Property Name="Role_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__UserRole__Role_I__489AC854" FromRole="UserRole" ToRole="Role" />
+          <Property Name="Admin_Id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="year_tbl">
+          <Key>
+            <PropertyRef Name="Year_Id" />
+          </Key>
+          <Property Name="Year_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Created_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="student_tbl" Relationship="Self.FK__student_t__FK_Ye__5FB337D6" FromRole="year_tbl" ToRole="student_tbl" />
+        </EntityType>
+        <Association Name="FK__student_t__FK_Co__5EBF139D">
+          <End Role="college_tbl" Type="Self.college_tbl" Multiplicity="0..1" />
+          <End Role="student_tbl" Type="Self.student_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="college_tbl">
+              <PropertyRef Name="Col_id" />
+            </Principal>
+            <Dependent Role="student_tbl">
+              <PropertyRef Name="FK_Collage_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_t__FK_Co__619B8048">
+          <End Role="course_tbl" Type="Self.course_tbl" Multiplicity="0..1" />
+          <End Role="student_tbl" Type="Self.student_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course_tbl">
+              <PropertyRef Name="course_id" />
+            </Principal>
+            <Dependent Role="student_tbl">
+              <PropertyRef Name="FK_Course_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_t__FK_De__6383C8BA">
+          <End Role="department_tbl" Type="Self.department_tbl" Multiplicity="0..1" />
+          <End Role="student_tbl" Type="Self.student_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department_tbl">
+              <PropertyRef Name="DeptId" />
+            </Principal>
+            <Dependent Role="student_tbl">
+              <PropertyRef Name="FK_Dept_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teacher_t__FK_De__05D8E0BE">
+          <End Role="department_tbl" Type="Self.department_tbl" Multiplicity="0..1" />
+          <End Role="Teacher_tbl" Type="Self.Teacher_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department_tbl">
+              <PropertyRef Name="DeptId" />
+            </Principal>
+            <Dependent Role="Teacher_tbl">
+              <PropertyRef Name="FK_Dept_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_t__FK_Ho__628FA481">
+          <End Role="hostel_tbl" Type="Self.hostel_tbl" Multiplicity="0..1" />
+          <End Role="student_tbl" Type="Self.student_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hostel_tbl">
+              <PropertyRef Name="hostel_id" />
+            </Principal>
+            <Dependent Role="student_tbl">
+              <PropertyRef Name="FK_Hostel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRole__Role_I__489AC854">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Role_Id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_t__FK_Se__60A75C0F">
+          <End Role="semester_tbl" Type="Self.semester_tbl" Multiplicity="0..1" />
+          <End Role="student_tbl" Type="Self.student_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="semester_tbl">
+              <PropertyRef Name="Sem_Id" />
+            </Principal>
+            <Dependent Role="student_tbl">
+              <PropertyRef Name="FK_Sem_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__student_t__FK_Ye__5FB337D6">
+          <End Role="year_tbl" Type="Self.year_tbl" Multiplicity="0..1" />
+          <End Role="student_tbl" Type="Self.student_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="year_tbl">
+              <PropertyRef Name="Year_Id" />
+            </Principal>
+            <Dependent Role="student_tbl">
+              <PropertyRef Name="FK_Year_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AttendanceTrackrEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AttendanceTbls" EntityType="Self.AttendanceTbl" />
+          <EntitySet Name="college_tbl" EntityType="Self.college_tbl" />
+          <EntitySet Name="course_tbl" EntityType="Self.course_tbl" />
+          <EntitySet Name="department_tbl" EntityType="Self.department_tbl" />
+          <EntitySet Name="hostel_tbl" EntityType="Self.hostel_tbl" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="semester_tbl" EntityType="Self.semester_tbl" />
+          <EntitySet Name="student_tbl" EntityType="Self.student_tbl" />
+          <EntitySet Name="Teacher_tbl" EntityType="Self.Teacher_tbl" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="year_tbl" EntityType="Self.year_tbl" />
+          <AssociationSet Name="FK__student_t__FK_Co__5EBF139D" Association="Self.FK__student_t__FK_Co__5EBF139D">
+            <End Role="college_tbl" EntitySet="college_tbl" />
+            <End Role="student_tbl" EntitySet="student_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_t__FK_Co__619B8048" Association="Self.FK__student_t__FK_Co__619B8048">
+            <End Role="course_tbl" EntitySet="course_tbl" />
+            <End Role="student_tbl" EntitySet="student_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_t__FK_De__6383C8BA" Association="Self.FK__student_t__FK_De__6383C8BA">
+            <End Role="department_tbl" EntitySet="department_tbl" />
+            <End Role="student_tbl" EntitySet="student_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teacher_t__FK_De__05D8E0BE" Association="Self.FK__Teacher_t__FK_De__05D8E0BE">
+            <End Role="department_tbl" EntitySet="department_tbl" />
+            <End Role="Teacher_tbl" EntitySet="Teacher_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_t__FK_Ho__628FA481" Association="Self.FK__student_t__FK_Ho__628FA481">
+            <End Role="hostel_tbl" EntitySet="hostel_tbl" />
+            <End Role="student_tbl" EntitySet="student_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRole__Role_I__489AC854" Association="Self.FK__UserRole__Role_I__489AC854">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_t__FK_Se__60A75C0F" Association="Self.FK__student_t__FK_Se__60A75C0F">
+            <End Role="semester_tbl" EntitySet="semester_tbl" />
+            <End Role="student_tbl" EntitySet="student_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__student_t__FK_Ye__5FB337D6" Association="Self.FK__student_t__FK_Ye__5FB337D6">
+            <End Role="year_tbl" EntitySet="year_tbl" />
+            <End Role="student_tbl" EntitySet="student_tbl" />
+          </AssociationSet>
+          <EntitySet Name="Admins" EntityType="AttendanceTrackrModel.Admin" />
+          <AssociationSet Name="FK_Admin_College" Association="AttendanceTrackrModel.FK_Admin_College">
+            <End Role="college_tbl" EntitySet="college_tbl" />
+            <End Role="Admin" EntitySet="Admins" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Admin_ID" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FK_College_Id" Type="Int32" />
+          <NavigationProperty Name="college_tbl" Relationship="AttendanceTrackrModel.FK_Admin_College" FromRole="Admin" ToRole="college_tbl" />
+        </EntityType>
+        <Association Name="FK_Admin_College">
+          <End Type="AttendanceTrackrModel.college_tbl" Role="college_tbl" Multiplicity="0..1" />
+          <End Type="AttendanceTrackrModel.Admin" Role="Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="college_tbl">
+              <PropertyRef Name="Col_id" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="FK_College_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AttendanceTrackrModelStoreContainer" CdmEntityContainer="AttendanceTrackrEntities">
+          <EntitySetMapping Name="AttendanceTbls">
+            <EntityTypeMapping TypeName="AttendanceTrackrModel.AttendanceTbl">
+              <MappingFragment StoreEntitySet="AttendanceTbl">
+                <ScalarProperty Name="attendance_id" ColumnName="attendance_id" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="isPresent" ColumnName="isPresent" />
+                <ScalarProperty Name="attendance_date" ColumnName="attendance_date" />
+                <ScalarProperty Name="marked_by" ColumnName="marked_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="college_tbl">
+            <EntityTypeMapping TypeName="AttendanceTrackrModel.college_tbl">
+              <MappingFragment StoreEntitySet="college_tbl">
+                <ScalarProperty Name="Col_id" ColumnName="Col_id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="course_tbl">
+            <EntityTypeMapping TypeName="AttendanceTrackrModel.course_tbl">
+              <MappingFragment StoreEntitySet="course_tbl">
+                <ScalarProperty Name="course_id" ColumnName="course_id" />
+                <ScalarProperty Name="course_name" ColumnName="course_name" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="department_tbl">
+            <EntityTypeMapping TypeName="AttendanceTrackrModel.department_tbl">
+              <MappingFragment StoreEntitySet="department_tbl">
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hostel_tbl">
+            <EntityTypeMapping TypeName="AttendanceTrackrModel.hostel_tbl">
+              <MappingFragment StoreEntitySet="hostel_tbl">
+                <ScalarProperty Name="hostel_id" ColumnName="hostel_id" />
+                <ScalarProperty Name="hostel_name" ColumnName="hostel_name" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="AttendanceTrackrModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="semester_tbl">
+            <EntityTypeMapping TypeName="AttendanceTrackrModel.semester_tbl">
+              <MappingFragment StoreEntitySet="semester_tbl">
+                <ScalarProperty Name="Sem_Id" ColumnName="Sem_Id" />
+                <ScalarProperty Name="Semester_Name" ColumnName="Semester_Name" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="student_tbl">
+            <EntityTypeMapping TypeName="AttendanceTrackrModel.student_tbl">
+              <MappingFragment StoreEntitySet="student_tbl">
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Student_Type" ColumnName="Student_Type" />
+                <ScalarProperty Name="FK_Dept_Id" ColumnName="FK_Dept_Id" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="FK_Collage_Id" ColumnName="FK_Collage_Id" />
+                <ScalarProperty Name="FK_Year_Id" ColumnName="FK_Year_Id" />
+                <ScalarProperty Name="FK_Sem_Id" ColumnName="FK_Sem_Id" />
+                <ScalarProperty Name="FK_Course_Id" ColumnName="FK_Course_Id" />
+                <ScalarProperty Name="FK_Hostel_Id" ColumnName="FK_Hostel_Id" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teacher_tbl">
+            <EntityTypeMapping TypeName="AttendanceTrackrModel.Teacher_tbl">
+              <MappingFragment StoreEntitySet="Teacher_tbl">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Faculty_Id" ColumnName="Faculty_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="FK_Dept_Id" ColumnName="FK_Dept_Id" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="AttendanceTrackrModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+                <ScalarProperty Name="Faculty_Id" ColumnName="Faculty_Id" />
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="year_tbl">
+            <EntityTypeMapping TypeName="AttendanceTrackrModel.year_tbl">
+              <MappingFragment StoreEntitySet="year_tbl">
+                <ScalarProperty Name="Year_Id" ColumnName="Year_Id" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="AttendanceTrackrModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="FK_College_Id" ColumnName="FK_College_Id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

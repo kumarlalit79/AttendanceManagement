@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("Attendance Tracker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="nav navbar-nav">
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="text-white">Welcome @Session["name"]</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Dashboard")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Index", "LoginTeacher")</li>
+                        <li>@*@Html.ActionLink("Login as Student", "Index", "StudentLogin")*@</li>
+                    }
+                </ul>
+
+                @*<ul class="nav navbar-nav">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Teacher"))
+                            {
+                                <li class="text-white">Welcome @User.Identity.Name</li>
+                            }
+                            else if (User.IsInRole("Student"))
+                            {
+                                <li class="text-white">Welcome @User.Identity.Name</li>
+                            }
+                            <li>@Html.ActionLink("Logout", "Logout", "Dashboard")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Login as Teacher", "Index", "LoginTeacher")</li>
+                            <li>@Html.ActionLink("Login as Student", "Index", "StudentLogin")</li>
+                        }
+                    </ul>*@
+
+
+                <ul class="navbar-nav ms-auto">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        // You can display additional authenticated user options here if needed
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@Url.Action("Create", "SignUpTeacher")" class="btn btn-outline-light">Sign Up as Teacher</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Create", "StudentSignUp")" class="btn btn-outline-light">Sign Up as Student</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+
+        <footer>
+
+
+            <hr />
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+<script src="~/Scripts/toastr.min.js"></script>
+
+</body>
+</html>

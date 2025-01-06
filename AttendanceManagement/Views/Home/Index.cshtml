@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@{
+    ViewBag.Title = "Attendance Management System";
+    Layout = "~/Views/Shared/_Layout.cshtml";  
+}
+
+<div class="container mt-5">
+    <h1 class="text-center">Welcome to Attendance Management System</h1>
+    <p class="text-center">Easily track and manage attendance records for students.</p>
+
+    <div class="row text-center mt-4">
+        <!-- Section for Students -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Student Management</h4>
+                    <p class="card-text">Add, Edit, or View Students</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section for Attendance -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Mark Attendance</h4>
+                    <p class="card-text">View and Mark Attendance for Students</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section for Reports -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Attendance Reports</h4>
+                    <p class="card-text">Generate reports on attendance records</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+
+
+<!-- Optional CSS Styling -->
+<style>
+    .card {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+</style>

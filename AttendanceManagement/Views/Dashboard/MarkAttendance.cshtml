@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AttendanceManagement.Models.student_tbl>
+
+@{
+    ViewBag.Title = "MarkAttendance";
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+
+<h2>MarkAttendance</h2>
+
+
+<p>
+    @Html.ActionLink("View Attendance Status", "AttendanceStatus")
+</p>
+
+<table class="table">
+    <tr>
+        <th>Student Name</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>
+                <button class="btn btn-success" onclick="markAttendance(@item.student_id, true)">Present</button>
+                <button class="btn btn-danger" onclick="markAttendance(@item.student_id, false)">Absent</button>
+            </td>
+        </tr>
+    }
+</table>
+
+<script>
+    function markAttendance(student_id, isPresent) {
+        $.post('@Url.Action("SaveAttendance", "Dashboard")', { student_id: student_id, isPresent: isPresent }, function() {
+            location.reload();
+        });
+    }
+</script>
+
+

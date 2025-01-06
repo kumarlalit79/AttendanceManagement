@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "AdminDashBoard";
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+
+<h2>AdminDashBoard</h2>
+
+
+
+
+<div class="row">
+    <div class="col-md-6 col-xl-4">
+        <div class="card mb-3 widget-content bg-midnight-bloom">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading">
+                        <a href="@Url.Action("CreateStudentPage" , "Dashboard")" class="text-white">Create Student</a>
+                    </div>
+                    @*<div class="widget-subheading">Only admin can create student</div>*@
+                    <a href="@Url.Action("ViewAllStudent" , "Dashboard")">View all students</a>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-white">
+                        <span>
+                            <asp:Label ID="LblTotalRecord" runat="server" Text="Label"></asp:Label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-4">
+        <div class="card mb-3 widget-content bg-arielle-smile">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading">
+                        <a href="@Url.Action("CreateTeacherPage" , "Dashboard")" class="text-white">Create Teacher</a>
+                    </div>
+                    @*<div class="widget-subheading">Only admin can create teacher</div>*@
+                    <a href="@Url.Action("ViewAllTeachers" , "Dashboard")">View all Teachers</a>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-white"><span><asp:Label ID="LblTotalDues" runat="server" Text="Label"></asp:Label></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-4">
+        <div class="card mb-3 widget-content bg-grow-early">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading">Latest Dues Date</div>
+                    <div class="widget-subheading">As per MTS</div>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-white"><span><asp:Label ID="LblLatestDues" runat="server" Text="Label"></asp:Label></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

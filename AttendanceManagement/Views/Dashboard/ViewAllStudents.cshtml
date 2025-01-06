@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "ViewAllStudents";
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+
+<h2>ViewAllStudents</h2>
+
+<div class="container mt-5">
+    <h2 class="text-center">All Students</h2>
+
+    <div class="row">
+        @foreach (var student in Model)
+        {
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h4>Student Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Left Column -->
+                            <div class="col-md-6">
+                                <dl class="row">
+                                    <dt class="col-sm-4"><strong>Student ID:</strong></dt>
+                                    <dd class="col-sm-8">@student.student_id</dd>
+
+                                    <dt class="col-sm-4"><strong>Name:</strong></dt>
+                                    <dd class="col-sm-8">@student.Name</dd>
+
+                                    <dt class="col-sm-4"><strong>Address:</strong></dt>
+                                    <dd class="col-sm-8">@student.Address</dd>
+
+                                    <dt class="col-sm-4"><strong>City:</strong></dt>
+                                    <dd class="col-sm-8">@student.City</dd>
+
+                                    <dt class="col-sm-4"><strong>State:</strong></dt>
+                                    <dd class="col-sm-8">@student.State</dd>
+
+                                    <dt class="col-sm-4"><strong>Pincode:</strong></dt>
+                                    <dd class="col-sm-8">@student.Pincode</dd>
+
+                                    <dt class="col-sm-4"><strong>Mobile:</strong></dt>
+                                    <dd class="col-sm-8">@student.Mobile</dd>
+
+                                    <dt class="col-sm-4"><strong>Email:</strong></dt>
+                                    <dd class="col-sm-8">@student.Email</dd>
+                                </dl>
+                            </div>
+
+                            <!-- Right Column -->
+                            <div class="col-md-6">
+                                <dl class="row">
+                                    <dt class="col-sm-4"><strong>Student Type:</strong></dt>
+                                    <dd class="col-sm-8">@student.Student_Type</dd>
+
+                                    <dt class="col-sm-4"><strong>Date of Birth:</strong></dt>
+                                    <dd class="col-sm-8">@student.DOB</dd>
+
+                                    <dt class="col-sm-4"><strong>Password:</strong></dt>
+                                    <dd class="col-sm-8">@student.Password</dd>
+
+                                    <dt class="col-sm-4"><strong>College:</strong></dt>
+                                    <dd class="col-sm-8">@student.college_tbl.Name</dd>
+
+                                    <dt class="col-sm-4"><strong>Course:</strong></dt>
+                                    <dd class="col-sm-8">@student.course_tbl.course_name</dd>
+
+                                    <dt class="col-sm-4"><strong>Department:</strong></dt>
+                                    <dd class="col-sm-8">@student.department_tbl.DeptName</dd>
+
+                                    <dt class="col-sm-4"><strong>Hostel:</strong></dt>
+                                    <dd class="col-sm-8">@student.hostel_tbl.hostel_name</dd>
+
+                                    <dt class="col-sm-4"><strong>Semester:</strong></dt>
+                                    <dd class="col-sm-8">@student.semester_tbl.Semester_Name</dd>
+
+                                    <dt class="col-sm-4"><strong>Year:</strong></dt>
+                                    <dd class="col-sm-8">@student.year_tbl.Year</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    
+</div>

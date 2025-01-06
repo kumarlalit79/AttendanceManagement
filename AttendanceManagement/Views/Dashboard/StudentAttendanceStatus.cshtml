@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AttendanceManagement.Models.AttendanceStudentVM>
+
+@{
+    ViewBag.Title = "StudentAttendanceStatus";
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+
+<h2>StudentAttendanceStatus</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.student_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isPresent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.attendance_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.marked_by)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.student_id)
+            </td>
+            <td>
+                @if (item.isPresent.Value)
+                {
+                    <span class="text-success">Present</span>
+                }
+                else
+                {
+                    <span class="text-danger">Absent</span>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.attendance_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.marked_by)
+            </td>
+
+        </tr>
+    }
+
+</table>
